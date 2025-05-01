@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.emrtdreader</groupId>
@@ -14,37 +15,21 @@
     </properties>
 
     <dependencies>
-           <!-- JMRTD library -->
-    <dependency>
-        <groupId>org.jmrtd</groupId>
-        <artifactId>jmrtd</artifactId>
-        <version>0.7.17</version> <!-- Use the version you're working with -->
-    </dependency>
-    
-    <!-- JUnit for testing -->
-    <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.13.2</version>
-        <scope>test</scope>
-    </dependency>
+        <!-- JMRTD library -->
+        <dependency>
+            <groupId>org.jmrtd</groupId>
+            <artifactId>jmrtd</artifactId>
+            <version>0.7.17</version>
+        </dependency>
 
-        <!-- BouncyCastle for cryptographic operations (e.g., Digital Signature verification) -->
+        <!-- BouncyCastle -->
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.70</version>
         </dependency>
 
-        <!-- JUnit for unit testing -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- SLF4J for logging (Optional but useful for debugging) -->
+        <!-- SLF4J for logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -56,11 +41,19 @@
             <version>1.7.32</version>
             <scope>runtime</scope>
         </dependency>
+
+        <!-- JUnit for unit testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Maven Compiler Plugin to specify Java version -->
+            <!-- Compiler plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -70,7 +63,23 @@
                     <target>17</target>
                 </configuration>
             </plugin>
+
+            <!-- Exec plugin for running Java -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>com.emrtdreader.App</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
 </project>
