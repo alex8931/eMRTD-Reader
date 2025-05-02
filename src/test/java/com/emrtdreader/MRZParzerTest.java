@@ -1,7 +1,6 @@
-package com.emrtdreader; // Make sure this matches exactly with your MRZParzer class
+package com.emrtdreader;
 
 import org.jmrtd.BACKey;
-import org.jmrtd.lds.icao.MRZInfo;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,6 +17,4 @@ public class MRZParzerTest {
         assertEquals("740812", bacKey.getDateOfBirth());
         assertEquals("120415", bacKey.getDateOfExpiry());
     }
-    
-    // Add other test methods as needed
 }
